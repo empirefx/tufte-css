@@ -158,6 +158,8 @@ article > .full-width {
 }
 
 section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 p,
