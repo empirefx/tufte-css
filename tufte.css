@@ -149,6 +149,7 @@ article > :not(.breakout, .full-width),
 
 article > .breakout {
   grid-column: breakout;
+  grid-column: content-start / breakout-end;
 }
 
 article > .full-width {
