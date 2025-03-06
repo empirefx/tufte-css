@@ -45,14 +45,14 @@ html {
 }
 
 body {
-    width: 87.5%;
+/*    width: 87.5%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 12.5%;
+    padding-left: 12.5%;*/
     font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     background-color: #fffff8;
     color: #111;
-    max-width: 1400px;
+/*    max-width: 1400px;*/
     counter-reset: sidenote-counter;
 }
 
@@ -119,11 +119,48 @@ p.subtitle {
 
 article {
     padding: 5rem 0rem;
+    --padding-inline: 1rem;
+    --content-max-width: 770px;
+    --breakout-max-width: 1400px;
+    --shift-left: -196px;
+
+    --breakout-size: calc(
+        (var(--breakout-max-width) - var(--content-max-width)) / 2
+    );
+
+    display: grid;
+    grid-template-columns:
+        [full-width-start] minmax(var(--padding-inline), 1fr)
+        [breakout-start] minmax(0, calc(var(--breakout-size) + var(--shift-left)))
+        [content-start] min(
+            100% - (var(--padding-inline) * 2),
+            var(--content-max-width)
+        )
+        [content-end]
+        minmax(0, calc(var(--breakout-size) - var(--shift-left)))
+        [breakout-end]
+        minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+article > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+article > .breakout {
+  grid-column: breakout;
+}
+
+article > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
 }
 
 section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+/*    padding-top: 1rem;*/
+/*    padding-bottom: 1rem;*/
 }
 
 p,
@@ -180,11 +217,11 @@ blockquote footer {
     text-align: right;
 }
 
-section > p,
+/*section > p,
 section > footer,
 section > table {
     width: 55%;
-}
+}*/
 
 /* 50 + 5 == 55, to be the same width as paragraph */
 section > dl,
