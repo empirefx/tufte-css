@@ -144,19 +144,16 @@ article {
 
 article > :not(.breakout, .full-width),
 .full-width > :not(.breakout, .full-width) {
-  grid-column: content;
+    grid-column: content;
 }
 
 article > .breakout {
-  grid-column: breakout;
-  grid-column: content-start / breakout-end;
+    grid-column: content-start / breakout-end;
 }
 
 article > .full-width {
-  grid-column: full-width;
-
-  display: grid;
-  grid-template-columns: inherit;
+    grid-column: full-width;
+    display: grid;
 }
 
 section {
@@ -372,6 +369,8 @@ pre.fullwidth > code {
 }
 
 .fullwidth {
+/*    max-width: 90%;
+    clear:both;*/
 }
 
 span.newthought {
