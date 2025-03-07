@@ -154,6 +154,17 @@ article > .breakout {
 article > .full-width {
     grid-column: full-width;
     display: grid;
+    grid-template-columns: inherit;
+}
+
+figure.full-width {
+    width: 100%;
+    display: block;
+}
+
+figure.full-width > img {
+    background: red;
+    object-fit: cover;
 }
 
 section {
